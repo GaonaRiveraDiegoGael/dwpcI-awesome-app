@@ -12,12 +12,17 @@ app.use((req, res, next) => {
   console.log("📢 Middleware #1");
   next(); // Llama a next() para que la solicitud continúe al siguiente middleware o ruta
 });
+
 // Registrando el segundo middleware
-app.use((req, res, next)=>{
+app.use((req, res) => {
   console.log("📢 Middleware #2");
-  // Se invoca al siguiente middlware
-  next();
+  // Se contesta al server
+  res.send(`
+    <h1>Welcome to Express Js</h1>
+    <p>This is my awesome app! 😎</p>
+  `);
 });
+
 // Asignando el middleware de express
 // al servidor http
 const server = http.createServer(app);
