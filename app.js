@@ -1,5 +1,5 @@
-// Importando el modulo http
-import http from 'http';
+// Importando el modulo http (puedes eliminar esta línea ya que no lo necesitas ahora)
+// import http from 'http';
 // Importando Express
 import express from 'express';
 
@@ -23,15 +23,11 @@ app.use((req, res) => {
   `);
 });
 
-// Asignando el middleware de express
-// al servidor http
-const server = http.createServer(app);
-
 // Definiendo puertos
 const port = 3000;
 const ip = "0.0.0.0";
 
-// Arrancando el servidor
-server.listen(port, ip, () => {
+// Arrancando el servidor directamente con app.listen
+app.listen(port, ip, () => {
   console.log(`🤖 Sirviendo en http://localhost:${port}`);
 });
