@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/GaonaRiveraDiegoGael/dwpcI-awesome-apphttps:#readme",
   "dependencies": {
+    "body-parser": "^1.20.3",
     "express": "^4.21.1"
   },
   "devDependencies": {
