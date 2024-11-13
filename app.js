@@ -6,7 +6,6 @@ import adminRouter from './routes/admin.route.js';
 import shopRouter from './routes/shop.route.js';
 
 // Creando la instancia de express
-// que basicamente es un middleware
 const app = express();
 
 // Se registra el middleware del body-parser
@@ -17,10 +16,19 @@ app.use(adminRouter);
 // Se agrega ruta shop
 app.use(shopRouter);
 
+// Registrando middleware para el error 404 sin http-status-codes
+app.use((req, res) => {
+  res.status(404).send(`
+    <h1 
+      style="color: crimson; text-align: center; font-size: 400%; margin: 3em 0 0 0">
+    🤷 404 RESOURCE NOT FOUND 🤷
+    </h1>
+  `);
+});
 
 // Definiendo puertos
 const port = 3000;
-const ip = "0.0.0.0"
+const ip = "0.0.0.0";
 
 // Arrancando el servidor
 app.listen(port, ip, () => {
