@@ -11,7 +11,7 @@ const router = Router();
 router.get('/add-product', (req, res, next) => {
   // Servimos el formulario
   console.log("📢 Sirviendo formulario...");
-  res.sendFile(path.join(ROOT_DIR, 'views', 'add-product.html'));
+  res.render('add-product');
 });
 
 // POST /add-product

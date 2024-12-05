@@ -8,8 +8,7 @@ const router = Router();
 // GET /
 router.get('/', (req, res) => {
   console.log("📢 Sirviendo la ruta '/'");
-  // Enviar el archivo HTML 'shop.html' desde la carpeta 'views'
-  res.sendFile(path.resolve('views', 'shop.html'));
+  res.render('shop');
 });
 
 // GET /add-product
