@@ -7,22 +7,29 @@ import { ROOT_DIR } from '../helpers/paths.js';
 // Creando una instancia del enrutador de express
 const router = Router();
 
-// GET /add-product
+// Datos en memoria volatil
+export const products = [];
+
+// GET /admin/add-product
 router.get('/add-product', (req, res, next) => {
   // Servimos el formulario
   console.log("📢 Sirviendo formulario...");
-  res.render('add-product');
+  res.render('add-product', {
+    addProduct: `active`, 
+    viewStyle: '/css/product.css',
+    docTitle:"Add Product"});
 });
 
-// POST /add-product
+// POST /admin/add-product
 router.post('/add-product', (req, res) => {
-  // Realizamos la extracción de los parámetros dentro de la petición
-  console.log("📢 Procesando formulario...");
-  console.log(req.body);  // Mostramos los datos del formulario en la consola
-
-  // Redirigimos a la ruta raíz después de procesar el formulario
+  // Realizaremos la desestructuracion de
+  // "name" de la petición
+  const { title } = req.body;
+  // Agregamos el dato en la base de datos
+  products.push(title);
+  // Redireccionando
   res.redirect('/');
 });
 
-// Exportando el enrutador para que pueda ser usado en otro archivo
+// Exportando el enrutador admin
 export default router;

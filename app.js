@@ -16,7 +16,7 @@ import { ROOT_DIR } from './helpers/paths.js'
 import path from 'path';
 
 // Creando la instancia de express
-// que básicamente es un middleware
+// que basicamente es un middleware
 const app = express();
 
 // Se crea instancia del template engine
@@ -36,28 +36,11 @@ app.set('view engine', 'hbs');
 // TE3. Se establece la ruta de las vistas
 app.set('views', path.resolve('views'));
 
-// Registrando el primer middleware
-app.use((req, res, next) => {
-  console.log("📢 Middleware #1");
-  next(); // Asegúrate de llamar a `next()` para continuar con los demás middlewares.
-});
-// Registrando el segundo middleware
-app.use((req, res, next)=>{
-  console.log("📢 Middleware #2");
-  // Se contesta al server
-  res.send(`
-    <h1>Welcome to Express Js</h1>
-    <p>This is my awesome app! 😎</p>
-  `);
-  // Se invoca al siguiente middlware
-  next();
-});
-
 // Se registra el middleware del body-parser
 app.use(express.urlencoded({ extended: true }));
 
 // Se registra el middleware para el servidor
-// de archivos estáticos
+// de archivos estaticos
 app.use(express.static(path.join(ROOT_DIR, 'public')));
 
 // Se agrega ruta de administrador
@@ -69,12 +52,12 @@ app.use(shopRouter);
 // 404
 app.use((req, res, next) => {
   res.status(httpStatus.NOT_FOUND)
-    .sendFile(path.resolve('views', '404.html'));
+  .sendFile(path.resolve('views','404.hbs'))
 });
 
 // Definiendo puertos
 const port = 3000;
-const ip = "0.0.0.0";
+const ip = "0.0.0.0"
 
 // Arrancando el servidor
 app.listen(port, ip, () => {
