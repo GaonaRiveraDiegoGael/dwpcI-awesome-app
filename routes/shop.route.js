@@ -22,6 +22,7 @@ router.get('/', (req, res)=>{
     shop: 'active', 
     docTitle:"Shop",
     viewStyle: '/css/product.css',
+    isProductsListEmpty: products.length === 0,
     products
   });
 });
