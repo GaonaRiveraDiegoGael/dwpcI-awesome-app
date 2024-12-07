@@ -1,10 +1,14 @@
 // Importando el enrutador de express
 import { Router } from 'express';
-// Importando el arreglo de productos
-import { products } from './admin.route.js';
+// Importando Action funcion del controlador products
+import { getProducts } from '../controllers/products.controller.js'
 
 // Creando una instancia del enrutador de express
 const router = Router();
+
+
+// GET /
+router.get('/', getProducts);
 
 // La ruta raíz entra en todo tipo de petición
 router.get(["/", "/home"], (_, res) => {
